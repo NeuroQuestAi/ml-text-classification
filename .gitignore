@@ -1,0 +1,13 @@
+*__pycache__*
+*.pyc
+*.pyo
+*.pyd
+.Python
+.tox/
+.coverage
+.coverage.*
+.cache
+*.cover
+*.log
+*.json
+data/
