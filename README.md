@@ -4,7 +4,12 @@
 
 [![Powered by NeuroQuestAI](https://img.shields.io/badge/powered%20by-NeuroQuestAI-orange.svg?style=flat&colorA=E1523D&colorB=007D8A)](
 https://neuroquest.ai)
-![rustc](https://img.shields.io/static/v1.svg?label=rustc&message=1.70%20&color=orange)
+![python 3][python_version]
+[![Code style: Black](https://img.shields.io/badge/code%20style-Black-000000.svg)](https://github.com/psf/black)
+[![Packaged with Poetry][poetry-badge]](https://python-poetry.org/)
+
+[poetry-badge]: https://img.shields.io/badge/packaging-poetry-cyan.svg
+[python_version]: https://img.shields.io/static/v1.svg?label=python&message=3%20&color=blue
 
 This project is a simple text classification using multi-language BERT.
 
