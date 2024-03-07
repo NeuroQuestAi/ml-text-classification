@@ -1,0 +1,27 @@
+{
+    "data":{
+       "bbc-en":"./data/bbc-text-en.csv.gz",
+       "bbc-pt":"./data/bbc-text-pt.csv.gz",
+       "bbc-multi":"./data/bbc-text-multi.csv.gz"
+    },
+    "model":{
+       "bert":{
+          "name":"bert-base-multilingual-cased",
+          "layer":12,
+          "dimension":768,
+          "length":512,
+          "labels":5
+       },
+       "nn":{
+          "seed":42,
+          "dropout":0.5,
+          "lr":1e-5,
+          "epochs":2
+       },
+       "results":{
+          "models":"./models",
+          "plots":"./plots",
+          "model-multi":"bbc-text-model-multi.h5"
+       }
+    }
+ }
