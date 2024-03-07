@@ -1,15 +1,20 @@
+import torch
+from config import Config
 from torch import nn
 from transformers import BertModel
-import torch
 
 
 class BertClassifier(nn.Module):
     def __init__(self, dropout: float = 0.5) -> None:
         super(BertClassifier, self).__init__()
 
-        self.bert = BertModel.from_pretrained("bert-base-cased")
+        config = Config()
+        self.bert = BertModel.from_pretrained(config.model.get("bert").get("name"))
         self.dropout = nn.Dropout(dropout)
-        self.linear = nn.Linear(768, 5)
+        self.linear = nn.Linear(
+            config.model.get("bert").get("dimension"),
+            config.model.get("bert").get("labels"),
+        )
         self.relu = nn.ReLU()
 
     def forward(self, input_id: torch.Tensor, mask: torch.Tensor) -> torch.Tensor:

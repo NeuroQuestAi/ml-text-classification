@@ -1,6 +1,6 @@
 from transformers import BertTokenizer
 
-tokenizer = BertTokenizer.from_pretrained("bert-base-cased")
+tokenizer = BertTokenizer.from_pretrained("bert-base-multilingual-cased")
 
 example_text = "Tell me what it's like to be in the stars"
 bert_input = tokenizer(

@@ -1,11 +1,13 @@
+from typing import Any
+
 import torch
 from torch.utils.data import DataLoader
 from tqdm import tqdm
-from typing import Any
 
 
 class ModelEvaluator:
     def __init__(self, model: Any) -> None:
+        print("Model Evaluator")
         self.model = model
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 

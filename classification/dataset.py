@@ -1,12 +1,16 @@
-import torch
+from typing import Any, Dict, List, Tuple
+
 import numpy as np
+import torch
+from config import Config
 from transformers import BertTokenizer
-from typing import List, Dict, Any, Tuple
 
 
 class Dataset(torch.utils.data.Dataset):
     def __init__(self, df: Any) -> None:
-        tokenizer = BertTokenizer.from_pretrained("bert-base-cased")
+        print("Dataset")
+        config = Config()
+        tokenizer = BertTokenizer.from_pretrained(config.model.get("bert").get("name"))
         categories: Dict[str, int] = {
             "business": 0,
             "entertainment": 1,
@@ -20,7 +24,7 @@ class Dataset(torch.utils.data.Dataset):
             tokenizer(
                 text,
                 padding="max_length",
-                max_length=512,
+                max_length=config.model.get("bert").get("length"),
                 truncation=True,
                 return_tensors="pt",
             )

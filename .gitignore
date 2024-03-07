@@ -11,3 +11,5 @@
 *.log
 *.json
 data/
+plots/
+models/
