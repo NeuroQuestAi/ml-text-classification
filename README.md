@@ -12,10 +12,16 @@ https://neuroquest.ai)
 [python_version]: https://img.shields.io/static/v1.svg?label=python&message=3%20&color=blue
 
 This project is a simple text classification using multi-language BERT.
-
 ### Project ☁️
 
-Add comment here...
+Details of the **BERT** model used:
+
+- [BERT base model (cased)](https://huggingface.co/google-bert/bert-base-cased)
+
+This project was inspired by this source: 
+
+- [Documents Classification](https://www.kaggle.com/code/ouardasakram/documents-classification-using-bert-on-bbc-dataset/notebook)
+
 
 ### Requirements 🛠️
 

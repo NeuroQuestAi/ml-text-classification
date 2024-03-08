@@ -9,7 +9,6 @@ from tqdm import tqdm
 
 class ModelTrainer:
     def __init__(self, model: Any) -> None:
-        print("Model Trainer")
         self.model = model
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -62,6 +61,7 @@ class ModelTrainer:
             if val_accuracy > best_val_acc:
                 best_val_acc = val_accuracy
                 best_epoch = epoch_num + 1
+                print(f"Save best model: {save_path}")
                 torch.save(self.model.state_dict(), save_path)
 
         print(

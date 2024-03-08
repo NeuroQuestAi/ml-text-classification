@@ -9,7 +9,6 @@
 .cache
 *.cover
 *.log
-*.json
 data/
 plots/
 models/

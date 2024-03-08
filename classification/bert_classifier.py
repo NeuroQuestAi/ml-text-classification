@@ -5,7 +5,9 @@ from transformers import BertModel
 
 
 class BertClassifier(nn.Module):
-    def __init__(self, dropout: float = 0.5) -> None:
+    def __init__(
+        self, dropout: float = Config().model.get("nn").get("dropout")
+    ) -> None:
         super(BertClassifier, self).__init__()
 
         config = Config()

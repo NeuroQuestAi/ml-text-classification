@@ -8,7 +8,6 @@ from transformers import BertTokenizer
 
 class Dataset(torch.utils.data.Dataset):
     def __init__(self, df: Any) -> None:
-        print("Dataset")
         config = Config()
         tokenizer = BertTokenizer.from_pretrained(config.model.get("bert").get("name"))
         categories: Dict[str, int] = {

@@ -6,7 +6,7 @@ example_text = "Tell me what it's like to be in the stars"
 bert_input = tokenizer(
     example_text,
     padding="max_length",
-    max_length=30,
+    max_length=20,
     truncation=True,
     return_tensors="pt",
 )

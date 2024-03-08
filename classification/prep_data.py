@@ -7,7 +7,6 @@ from config import Config
 
 class PrepData:
     def __init__(self) -> None:
-        print("Prep Data")
         config = Config()
 
         data_en = config.data.get("bbc-en")
