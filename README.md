@@ -16,12 +16,11 @@ This project is a simple text classification using multi-language BERT.
 
 Details of the **BERT** model used:
 
-- [BERT base model (cased)](https://huggingface.co/google-bert/bert-base-cased)
+- [BERT multilingual base model (cased)](https://huggingface.co/google-bert/bert-base-multilingual-cased)
 
 This project was inspired by this source: 
 
 - [Documents Classification](https://www.kaggle.com/code/ouardasakram/documents-classification-using-bert-on-bbc-dataset/notebook)
-
 
 ### Requirements 🛠️
 
