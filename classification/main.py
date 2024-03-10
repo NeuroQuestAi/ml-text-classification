@@ -1,11 +1,9 @@
 import os
-import sys
 
 import numpy as np
 import pandas as pd
 from bert_classifier import BertClassifier
 from config import Config
-from dataset import Dataset
 from model_evaluator import ModelEvaluator
 from model_trainer import ModelTrainer
 from prep_data import PrepData
@@ -57,8 +55,8 @@ def train() -> None:
     print("Network Setup:", config.model.get("nn"))
 
     trainer.train(
-        train_data=Dataset(df_train),
-        val_data=Dataset(df_val),
+        train_data=df_train,
+        val_data=df_val,
         learning_rate=lr,
         epochs=epochs,
         save_path=full_model_path,
@@ -72,7 +70,7 @@ def main() -> None:
     try:
         train()
     except BaseException as e:
-        print(e)
+        print(f"Catch: {str(e)}")
 
 
 if __name__ == "__main__":
