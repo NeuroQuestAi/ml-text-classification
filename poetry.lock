@@ -1460,6 +1460,17 @@ video = ["av (==9.2.0)", "decord (==0.6.0)"]
 vision = ["Pillow (<10.0.0)"]
 
 [[package]]
+name = "tweet-preprocessor"
+version = "0.6.0"
+description = "Elegant tweet preprocessing"
+optional = false
+python-versions = "*"
+files = [
+    {file = "tweet-preprocessor-0.6.0.tar.gz", hash = "sha256:827d20d4c3ab8f8c3a084a56991b061be77bdf1d2e30b6b0d930f7f0e140b961"},
+    {file = "tweet_preprocessor-0.6.0-py3-none-any.whl", hash = "sha256:303ce6f1c788cde01eb279a2cc5035d493a31b5a2fb7f8e2a1679d7e1e3e1fa6"},
+]
+
+[[package]]
 name = "typing-extensions"
 version = "4.10.0"
 description = "Backported and Experimental Type Hints for Python 3.8+"
@@ -1490,4 +1501,4 @@ zstd = ["zstandard (>=0.18.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "0e8c61a4f0bc2d8db793e278880e3cc988e561e5de03086f5d570c99693b14b8"
+content-hash = "1b75059a34faf85e1ff20e4a358b53f9b3138fa1c1af40449843f82b3b3b8213"

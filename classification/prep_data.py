@@ -2,6 +2,7 @@ import os
 import re
 
 import pandas as pd
+import preprocessor as p
 from config import Config
 
 
@@ -25,7 +26,7 @@ class PrepData:
         df_pt["lang"] = 1
 
         df_multi = pd.concat([df_en, df_pt], ignore_index=True)
-        df_multi["text"] = df_multi["text"].apply(self.remove_hyperlinks)
+        df_multi["text"] = df_multi["text"].apply(self.preprocess_text)
         df_multi["text"] = df_multi["text"].str.lower().str.strip()
 
         df_multi = df_multi.sample(frac=1).reset_index(drop=True)
@@ -33,10 +34,6 @@ class PrepData:
         multi = config.data.get("bbc-multi")
         df_multi.to_csv(multi, index=False, compression="gzip")
         print(f"Save multi-language dataset: {multi}")
-
-    @staticmethod
-    def remove_hyperlinks(text: str) -> str:
-        return re.sub(r"http\S+", "", text)
 
     def valid(self) -> None:
         try:
@@ -55,3 +52,11 @@ class PrepData:
 
         except BaseException as e:
             print(f"Catch: {str(e)}")
+
+    @staticmethod
+    def preprocess_text(sentence: str) -> str:
+        sentence = p.clean(sentence)
+        sentence = re.sub(r"http\S+", " ", sentence)
+        sentence = re.sub(r"\s+", " ", sentence)
+        sentence = re.sub(r"\|\|\|", " ", sentence)
+        return str(sentence).lower()

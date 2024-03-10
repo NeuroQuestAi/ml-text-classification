@@ -2,6 +2,7 @@ import torch
 from bert_classifier import BertClassifier
 from config import Config
 from dataset import Labels
+from prep_data import PrepData
 from transformers import BertTokenizer
 
 
@@ -21,9 +22,9 @@ def unseen_predict(config, device, model, sentence):
     tokenizer = BertTokenizer.from_pretrained(config.model.get("bert").get("name"))
 
     sentence_input = tokenizer(
-        sentence,
+        PrepData.preprocess_text(sentence=sentence),
         padding="max_length",
-        max_length=512,
+        max_length=config.model.get("bert").get("length"),
         truncation=True,
         return_tensors="pt",
     ).to(device)
@@ -41,15 +42,16 @@ def unseen_predict(config, device, model, sentence):
 
 config = Config()
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
 unseen_predict(
     config=config,
     device=device,
     model=model_inference(),
-    sentence="manchester is a great football team in the history of sports.",
+    sentence="Manchester is a great football team in the history of sports.",
 )
 unseen_predict(
     config=config,
     device=device,
     model=model_inference(),
-    sentence="our job in politics is to help the population.",
+    sentence="Our job in politics is to help the population.",
 )
