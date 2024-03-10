@@ -6,6 +6,24 @@ from config import Config
 from transformers import BertTokenizer
 
 
+class Labels:
+
+    def __init__(self) -> None:
+        self._labels = {
+            0: "business",
+            1: "entertainment",
+            2: "sport",
+            3: "tech",
+            4: "politics",
+        }
+
+    def get(self):
+        return self._labels
+
+    def inverse(self):
+        return {v: k for k, v in self._labels.items()}
+
+
 class Dataset(torch.utils.data.Dataset):
     def __init__(self, df: Any) -> None:
         config = Config()
