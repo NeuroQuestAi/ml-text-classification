@@ -43,6 +43,7 @@ def unseen_predict(config, device, model, sentence):
 config = Config()
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
+# EN
 unseen_predict(
     config=config,
     device=device,
@@ -54,4 +55,18 @@ unseen_predict(
     device=device,
     model=model_inference(),
     sentence="Our job in politics is to help the population.",
+)
+
+# PT
+unseen_predict(
+    config=config,
+    device=device,
+    model=model_inference(),
+    sentence="Manchester é um grande time de futebol na história do esporte mundial.",
+)
+unseen_predict(
+    config=config,
+    device=device,
+    model=model_inference(),
+    sentence="Nosso principal trabalho na política é ajudar a população.",
 )
