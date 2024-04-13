@@ -8,7 +8,6 @@ from transformers import BertTokenizer
 
 
 class Labels:
-
     def __init__(self, categories: List[str]) -> None:
         self._labels = {cat: i for i, cat in enumerate(categories)}
 
@@ -17,6 +16,24 @@ class Labels:
 
     def inverse(self) -> Dict[int, str]:
         return {v: k for k, v in self._labels.items()}
+
+    @staticmethod
+    def save_to_file(categories: list) -> None:
+        model_path = Config().model.get("results").get("models")
+        labels_path = Config().model.get("results").get("model-labels")
+
+        with open(f"{model_path}/{labels_path}", "w") as f:
+            json.dump(categories, f)
+
+    @staticmethod
+    def get_from_file() -> dict:
+        model_path = Config().model.get("results").get("models")
+        labels_path = Config().model.get("results").get("model-labels")
+
+        with open(f"{model_path}/{labels_path}", "r") as f:
+            data = json.load(f)
+
+        return data
 
 
 class Dataset(torch.utils.data.Dataset):
@@ -27,11 +44,7 @@ class Dataset(torch.utils.data.Dataset):
         unique_categories = df["category"].unique().tolist()
         categories: Dict[str, int] = Labels(categories=unique_categories).get()
 
-        model_path = config.model.get("results").get("models")
-        labels_path = config.model.get("results").get("model-labels")
-
-        with open(f"{model_path}/{labels_path}", "w") as f:
-            json.dump(categories, f)
+        Labels.save_to_file(categories=categories)
 
         self._labels: List[int] = [
             categories[str(x).strip().lower()] for x in df["category"]
