@@ -9,6 +9,5 @@
 .cache
 *.cover
 *.log
-data/
 plots/
 models/

@@ -1,3 +1,4 @@
+import json
 from typing import Any, Dict, List, Tuple
 
 import numpy as np
@@ -8,14 +9,8 @@ from transformers import BertTokenizer
 
 class Labels:
 
-    def __init__(self) -> None:
-        self._labels = {
-            0: "business",
-            1: "entertainment",
-            2: "sport",
-            3: "tech",
-            4: "politics",
-        }
+    def __init__(self, categories: List[str]) -> None:
+        self._labels = {cat: i for i, cat in enumerate(categories)}
 
     def get(self) -> Dict[str, int]:
         return self._labels
@@ -28,9 +23,19 @@ class Dataset(torch.utils.data.Dataset):
     def __init__(self, df: Any) -> None:
         config = Config()
         tokenizer = BertTokenizer.from_pretrained(config.model.get("bert").get("name"))
-        categories: Dict[str, int] = Labels().get()
 
-        self._labels: List[int] = [categories[x] for x in df["category"]]
+        unique_categories = df["category"].unique().tolist()
+        categories: Dict[str, int] = Labels(categories=unique_categories).get()
+
+        model_path = config.model.get("results").get("models")
+        labels_path = config.model.get("results").get("model-labels")
+
+        with open(f"{model_path}/{labels_path}", "w") as f:
+            json.dump(categories, f)
+
+        self._labels: List[int] = [
+            categories[str(x).strip().lower()] for x in df["category"]
+        ]
         self._texts: List[Dict[str, torch.Tensor]] = [
             tokenizer(
                 text,

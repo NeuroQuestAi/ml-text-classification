@@ -51,7 +51,7 @@ class PrepData:
             assert sum(category) == 5, "should contain only 5 categories"
 
         except BaseException as e:
-            print(f"Catch: {str(e)}")
+            print(f"Error: {str(e)}")
 
     @staticmethod
     def preprocess_text(sentence: str) -> str:

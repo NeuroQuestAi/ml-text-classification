@@ -21,7 +21,8 @@
        "results":{
           "models":"./models",
           "plots":"./plots",
-          "model-multi":"bbc-text-model-multi.pth"
+          "model-multi":"bbc-text-model-multi.pth",
+          "model-labels":"categories.json"
        }
     }
  }

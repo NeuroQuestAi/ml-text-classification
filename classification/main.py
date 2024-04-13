@@ -54,6 +54,7 @@ def train() -> None:
     print("BERT Setup:", config.model.get("bert"))
     print("Network Setup:", config.model.get("nn"))
 
+    print(df_train)
     trainer.train(
         train_data=df_train,
         val_data=df_val,
@@ -62,15 +63,12 @@ def train() -> None:
         save_path=full_model_path,
     )
 
-    # evaluator = ModelEvaluator(model=model)
-    # evaluator.evaluate(test_data=df_test)
+    evaluator = ModelEvaluator(model=BertClassifier())
+    evaluator.evaluate(test_data=df_test)
 
 
 def main() -> None:
-    try:
-        train()
-    except BaseException as e:
-        print(f"Catch: {str(e)}")
+    train()
 
 
 if __name__ == "__main__":
