@@ -11,3 +11,5 @@
 *.log
 plots/
 models/
+data/bbc-text-multi.csv.gz
+
