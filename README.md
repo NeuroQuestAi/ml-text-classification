@@ -82,7 +82,7 @@ This will generate the torch model in the models folder. Then just test the pred
 $ ./predictor 
 ```
 
-`Note:` ML model settings are in the (config.json) file.
+`Note:` Model settings are in the (config.json) file.
 
 ### Authors 👨‍💻
 
