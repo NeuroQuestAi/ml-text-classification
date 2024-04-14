@@ -8,8 +8,14 @@ from transformers import BertTokenizer
 
 
 class Labels:
-    def __init__(self, categories: List[str]) -> None:
-        self._labels = {cat: i for i, cat in enumerate(categories)}
+    def __init__(self) -> None:
+        self._labels = {
+            "business": 0,
+            "entertainment": 1,
+            "sport": 2,
+            "tech": 3,
+            "politics": 4,
+        }
 
     def get(self) -> Dict[str, int]:
         return self._labels
@@ -41,14 +47,10 @@ class Dataset(torch.utils.data.Dataset):
         config = Config()
         tokenizer = BertTokenizer.from_pretrained(config.model.get("bert").get("name"))
 
-        unique_categories = df["category"].unique().tolist()
-        categories: Dict[str, int] = Labels(categories=unique_categories).get()
-
+        categories = Labels().get()
         Labels.save_to_file(categories=categories)
+        self._labels: List[int] = [categories[x] for x in df["category"]]
 
-        self._labels: List[int] = [
-            categories[str(x).strip().lower()] for x in df["category"]
-        ]
         self._texts: List[Dict[str, torch.Tensor]] = [
             tokenizer(
                 text,

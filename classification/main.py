@@ -11,7 +11,7 @@ from prep_data import PrepData
 np.random.seed(Config().model.get("nn").get("seed"))
 
 
-def train() -> None:
+def train(disable_evaluator: bool = False) -> None:
     config = Config()
 
     PrepData().valid()
@@ -54,7 +54,6 @@ def train() -> None:
     print("BERT Setup:", config.model.get("bert"))
     print("Network Setup:", config.model.get("nn"))
 
-    print(df_train)
     trainer.train(
         train_data=df_train,
         val_data=df_val,
@@ -63,12 +62,13 @@ def train() -> None:
         save_path=full_model_path,
     )
 
-    evaluator = ModelEvaluator(model=BertClassifier())
-    evaluator.evaluate(test_data=df_test)
+    if disable_evaluator:
+        evaluator = ModelEvaluator(model=BertClassifier())
+        evaluator.evaluate(test_data=df_test)
 
 
 def main() -> None:
-    train()
+    train(disable_evaluator=False)
 
 
 if __name__ == "__main__":

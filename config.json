@@ -16,7 +16,7 @@
           "seed":42,
           "dropout":0.5,
           "lr":1e-5,
-          "epochs":5
+          "epochs":2
        },
        "results":{
           "models":"./models",

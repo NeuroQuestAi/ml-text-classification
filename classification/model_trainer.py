@@ -44,7 +44,7 @@ class ModelTrainer:
 
             total_acc_train, total_loss_train = 0, 0
 
-            for train_input, train_label in tqdm(train_dataloader):
+            for train_input, train_label in tqdm(train_dataloader, desc="Training"):
 
                 train_label = train_label.to(self._device)
                 mask = train_input["attention_mask"].to(self._device)
@@ -67,7 +67,6 @@ class ModelTrainer:
             with torch.no_grad():
 
                 for val_input, val_label in val_dataloader:
-
                     val_label = val_label.to(self._device)
                     mask = val_input["attention_mask"].to(self._device)
                     input_id = val_input["input_ids"].squeeze(1).to(self._device)

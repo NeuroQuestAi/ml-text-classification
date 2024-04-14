@@ -13,7 +13,6 @@ def model_inference():
     name_model = config.model.get("results").get("model-multi")
 
     model.load_state_dict(torch.load(f"{dir_model}/{name_model}"))
-    model.eval()
 
     return model
 
@@ -35,7 +34,8 @@ def unseen_predict(config, device, model, sentence):
         output = model(input_ids, mask)
 
     predicted_class_label = output.argmax(dim=1).item()
-    predicted_class = Labels().get()[predicted_class_label]
+    labels = {v: k for k, v in Labels.get_from_file().items()}
+    predicted_class = labels[predicted_class_label]
 
     print(f"The predicted class is: {predicted_class}")
 
