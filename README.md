@@ -24,11 +24,24 @@ This project was inspired by this source:
 
 ### Requirements 🛠️
 
-Add comment here...
+It is necessary:
+
+- [Python 3.11](https://www.python.org/downloads/release/python-3110/)
+- [Poetry](https://python-poetry.org/)
+
+`Note:` A machine with a GPU is not required, but it is recommended to accelerate training.
 
 ### Datasets 💻
 
-Add comment here...
+It was used the [BBC](https://www.kaggle.com/datasets/sainijagjit/bbc-dataset) dataset to classify texts into the following labels:
+
+- Business
+- Entertainment
+- Sport
+- Tech
+- Politics
+
+The texts were translated into Portuguese using the Google Translator API, and then the English and Portuguese texts were combined to create a multilingual version.
 
 ### Build and Running 🚀
 
