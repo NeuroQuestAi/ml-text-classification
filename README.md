@@ -28,6 +28,7 @@ It is necessary:
 
 - [Python 3.11](https://www.python.org/downloads/release/python-3110/)
 - [Poetry](https://python-poetry.org/)
+- [Git](https://git-scm.com/)
 
 `Note:` A machine with a GPU is not required, but it is recommended to accelerate training.
 
@@ -45,7 +46,41 @@ The texts were translated into Portuguese using the Google Translator API, and t
 
 ### Build and Running 🚀
 
-Add comment here...
+Clone the project to your computer using Git:
+
+```shell
+$ git clone git@github.com:NeuroQuestAi/ml-text-classification.git
+```
+
+Go to the project root folder:
+
+```shell
+$ cd ml-text-classification.git
+```
+
+Use poetry to access the project:
+
+```shell
+$ poetry shell
+```
+
+Install all dependencies:
+
+```shell
+$ poetry install && poetry update 
+```
+
+Run the model training:
+
+```shell
+$ ./train 
+```
+
+This will generate the torch model in the models folder. Then just test the predictions with the command:
+
+```shell
+$ ./predictor 
+```
 
 ### Authors 👨‍💻
 
