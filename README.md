@@ -11,7 +11,8 @@ https://neuroquest.ai)
 [poetry-badge]: https://img.shields.io/badge/packaging-poetry-cyan.svg
 [python_version]: https://img.shields.io/static/v1.svg?label=python&message=3%20&color=blue
 
-This project is a simple text classification using multi-language BERT.
+This project is a simple text classification using multi-language BERT. 🇬🇧 | 🇧🇷
+
 ### Project ☁️
 
 Details of the **BERT** model used:
@@ -42,7 +43,7 @@ It was used the [BBC](https://www.kaggle.com/datasets/sainijagjit/bbc-dataset) d
 - Tech
 - Politics
 
-The texts were translated into Portuguese using the Google Translator API, and then the English and Portuguese texts were combined to create a multilingual version.
+The texts were translated into Portuguese using the Google Translator API, and then the English 🇬🇧 and Portuguese 🇧🇷 texts were combined to create a multilingual version.
 
 ### Build and Running 🚀
 
