@@ -6,7 +6,7 @@
     },
     "model":{
        "bert":{
-          "name":"bert-base-multilingual-cased",
+          "name":"bert-base-multilingual-uncased",
           "layer":12,
           "dimension":768,
           "length":512,
@@ -15,14 +15,13 @@
        "nn":{
           "seed":42,
           "dropout":0.5,
-          "lr":1e-5,
-          "epochs":2
+          "lr":1e-6,
+          "epochs":5
        },
        "results":{
           "models":"./models",
           "plots":"./plots",
-          "model-multi":"bbc-text-model-multi.pth",
-          "model-labels":"categories.json"
+          "model-multi":"bbc-text-model-multi.pth"
        }
     }
  }

@@ -10,11 +10,11 @@ class ModelEvaluator:
     def __init__(self, model: BertClassifier) -> None:
         self.model = model
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        if self.device == "cuda":
+            self.model = self.model.cuda()
 
-    def evaluate(self, test_data: pd.DataFrame) -> float:
-        test_dataloader = DataLoader(Dataset(test_data), batch_size=2)
-        self.model.to(self.device)
-        self.model.eval()
+    def evaluate(self, df_test: pd.DataFrame) -> float:
+        test_dataloader = DataLoader(Dataset(df_test), batch_size=2)
 
         total_acc_test = 0
         with torch.no_grad():
@@ -28,7 +28,7 @@ class ModelEvaluator:
                 acc = (output.argmax(dim=1) == test_label).sum().item()
                 total_acc_test += acc
 
-        test_accuracy = total_acc_test / len(test_data)
+        test_accuracy = total_acc_test / len(df_test)
         print(test_accuracy)
         print(f"Test Accuracy: {test_accuracy:.3f}")
 

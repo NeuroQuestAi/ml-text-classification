@@ -11,7 +11,7 @@ from prep_data import PrepData
 np.random.seed(Config().model.get("nn").get("seed"))
 
 
-def train(disable_evaluator: bool = False) -> None:
+def train() -> None:
     config = Config()
 
     PrepData().valid()
@@ -46,7 +46,8 @@ def train(disable_evaluator: bool = False) -> None:
         f"\nDataFrame Split: -> Train: {len(df_train)} -> Val: {len(df_val)} -> Test: {len(df_test)}"
     )
 
-    trainer = ModelTrainer(model=BertClassifier())
+    model = BertClassifier()
+    trainer = ModelTrainer(model=model)
 
     lr = config.model.get("nn").get("lr")
     epochs = config.model.get("nn").get("epochs")
@@ -62,13 +63,12 @@ def train(disable_evaluator: bool = False) -> None:
         save_path=full_model_path,
     )
 
-    if disable_evaluator:
-        evaluator = ModelEvaluator(model=BertClassifier())
-        evaluator.evaluate(test_data=df_test)
+    print("\nModel Evaluator")
+    ModelEvaluator(model=model).evaluate(df_test=df_test)
 
 
 def main() -> None:
-    train(disable_evaluator=False)
+    train()
 
 
 if __name__ == "__main__":

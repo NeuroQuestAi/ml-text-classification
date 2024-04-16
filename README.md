@@ -11,17 +11,19 @@ https://neuroquest.ai)
 [poetry-badge]: https://img.shields.io/badge/packaging-poetry-cyan.svg
 [python_version]: https://img.shields.io/static/v1.svg?label=python&message=3%20&color=blue
 
-This project is a simple text classification using multi-language BERT. 🇬🇧 | 🇧🇷
+This project is a simple text classification 📝 using multi-language BERT. 🇬🇧 | 🇧🇷
 
 ### Project ☁️
 
 Details of the **BERT** model used:
 
-- [BERT multilingual base model (cased)](https://huggingface.co/google-bert/bert-base-multilingual-cased)
+- [BERT multilingual base model (uncased)](https://huggingface.co/google-bert/bert-base-multilingual-uncased)
 
 This project was inspired by this source: 
 
 - [Documents Classification](https://www.kaggle.com/code/ouardasakram/documents-classification-using-bert-on-bbc-dataset/notebook)
+
+`Note:` We reached **98**% accuracy.
 
 ### Requirements 🛠️
 
@@ -31,50 +33,45 @@ It is necessary:
 - [Poetry](https://python-poetry.org/)
 - [Git](https://git-scm.com/)
 
-`Note:` A machine with a GPU is not required, but it is recommended to accelerate training.
+`Note:` A machine with a *GPU* is not required, but it is recommended to accelerate training.
 
-### Datasets 💻
+### Datasets 📊
 
 It was used the [BBC](https://www.kaggle.com/datasets/sainijagjit/bbc-dataset) dataset to classify texts into the following labels:
 
-- Business
-- Entertainment
-- Sport
-- Tech
-- Politics
+- Business 💼
+- Entertainment 🎬
+- Sport ⚽
+- Tech 💻
+- Politics 🏛️
 
-The texts were translated into Portuguese using the Google Translator API, and then the English 🇬🇧 and Portuguese 🇧🇷 texts were combined to create a multilingual version.
+The texts in the dataset were first translated into Brazilian Portuguese, using the [Google Translator API](https://cloud.google.com/translate/docs/reference/rest).
+After that, the English 🇬🇧 and Portuguese 🇧🇷 texts were combined to create a multilingual version.
 
 ### Build and Running 🚀
 
-Clone the project to your computer using Git:
+Clone the project to your computer using Git and go to the project root folder:
 
 ```shell
-$ git clone git@github.com:NeuroQuestAi/ml-text-classification.git
-```
-
-Go to the project root folder:
-
-```shell
-$ cd ml-text-classification.git
+git clone git@github.com:NeuroQuestAi/ml-text-classification.git && cd ml-text-classification.git
 ```
 
 Use poetry to access the project:
 
 ```shell
-$ poetry shell
+poetry shell
 ```
 
 Install all dependencies:
 
 ```shell
-$ poetry install && poetry update 
+poetry install && poetry update 
 ```
 
-Run the model training:
+Run the model training and evaluation:
 
 ```shell
-$ ./train 
+./train 
 ```
 
 This will generate the torch model in the models folder. Then just test the predictions with the command:
@@ -83,7 +80,7 @@ This will generate the torch model in the models folder. Then just test the pred
 $ ./predictor 
 ```
 
-`Note:` Model settings are in the (config.json) file.
+`Note:` Model settings are in the [config.json](./config.json) file.
 
 ### Authors 👨‍💻
 

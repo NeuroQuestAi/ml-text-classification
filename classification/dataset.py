@@ -23,24 +23,6 @@ class Labels:
     def inverse(self) -> Dict[int, str]:
         return {v: k for k, v in self._labels.items()}
 
-    @staticmethod
-    def save_to_file(categories: list) -> None:
-        model_path = Config().model.get("results").get("models")
-        labels_path = Config().model.get("results").get("model-labels")
-
-        with open(f"{model_path}/{labels_path}", "w") as f:
-            json.dump(categories, f)
-
-    @staticmethod
-    def get_from_file() -> dict:
-        model_path = Config().model.get("results").get("models")
-        labels_path = Config().model.get("results").get("model-labels")
-
-        with open(f"{model_path}/{labels_path}", "r") as f:
-            data = json.load(f)
-
-        return data
-
 
 class Dataset(torch.utils.data.Dataset):
     def __init__(self, df: Any) -> None:
@@ -48,8 +30,9 @@ class Dataset(torch.utils.data.Dataset):
         tokenizer = BertTokenizer.from_pretrained(config.model.get("bert").get("name"))
 
         categories = Labels().get()
-        Labels.save_to_file(categories=categories)
-        self._labels: List[int] = [categories[x] for x in df["category"]]
+        self._labels: List[int] = [
+            categories[str(x).lower().strip()] for x in df["category"]
+        ]
 
         self._texts: List[Dict[str, torch.Tensor]] = [
             tokenizer(
