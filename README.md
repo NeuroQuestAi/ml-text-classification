@@ -78,7 +78,7 @@ Run the model training and evaluation:
 This will generate the torch model in the models folder. Then just test the predictions with the command:
 
 ```shell
-$ ./predictor 
+./predictor 
 ```
 
 `Note:` Model settings are in the [config.json](./config.json) file.
