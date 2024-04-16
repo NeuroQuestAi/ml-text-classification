@@ -81,6 +81,21 @@ This will generate the torch model in the models folder. Then just test the pred
 ./predictor 
 ```
 
+Output example:
+
+| Text                                                                | Lang   | Prediction    | 
+| ------------------------------------------------------------------- | ------ |---------------|
+| Os negócios são o tecido vital da economia...                       | PT     | BUSINESS      | 
+| A variedade de formas de entretenimento reflete...                  | PT     | ENTERTAINMENT |
+| Os valores como fair play, respeito e camaradagem são...            | PT     | SPORT         |
+| Desde a revolução digital até as últimas descobertas...             | PT     | TECH          |
+| A política reflete as diferentes visões, valores...                 | PT     | POLITICS      |
+| Businesses are the lifeblood of the economy, where ideas...         | EN     | BUSINESS      |
+| From thrilling movies to engaging games, and soul-touching...       | EN     | ENTERTAINMENT |
+| Sports are a universal passion that brings people...                | EN     | SPORT         |
+| Artificial intelligence, cloud computing, the Internet...           | EN     | TECH          |
+| Active citizen participation in political life...                   | EN     | POLITICS      |
+
 `Note:` Model settings are in the [config.json](./config.json) file.
 
 ### Authors 👨‍💻
