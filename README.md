@@ -53,7 +53,8 @@ After that, the English 🇬🇧 and Portuguese 🇧🇷 texts were combined to 
 Clone the project to your computer using Git and go to the project root folder:
 
 ```shell
-git clone git@github.com:NeuroQuestAi/ml-text-classification.git && cd ml-text-classification.git
+git clone git@github.com:NeuroQuestAi/ml-text-classification.git && \
+ cd ml-text-classification.git
 ```
 
 Use poetry to access the project:
