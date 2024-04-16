@@ -4,6 +4,6 @@
 [[ "$(command -v isort)" ]] || { echo 'Sorry! isort is not installed...' 1>&2 && exit -1; }
 
 black classification/ && isort classification/
-black tests/ && isort tests/
+black test/ && isort test/
 
 exit 0
