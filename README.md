@@ -23,6 +23,12 @@ This project was inspired by this source:
 
 - [Documents Classification](https://www.kaggle.com/code/ouardasakram/documents-classification-using-bert-on-bbc-dataset/notebook)
 
+Training and validation accuracy:
+
+<p align="center">
+  <img src="plots/model-acc.png" alt="Model ACC"/>
+</p>
+
 `Note:` We reached **98**% accuracy.
 
 ### Requirements 🛠️

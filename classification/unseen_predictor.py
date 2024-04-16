@@ -24,7 +24,7 @@ def model_inference() -> Optional[BertClassifier] | None:
     return model
 
 
-def unseen_predict(model: BertClassifier, sentence: str) -> None:
+def unseen_predictor(model: BertClassifier, sentence: str) -> None:
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     tokenizer = BertTokenizer.from_pretrained(Config().model.get("bert").get("name"))
 
@@ -69,4 +69,4 @@ if __name__ == "__main__":
     ]
 
     for sentence in sentences:
-        unseen_predict(model=model, sentence=sentence)
+        unseen_predictor(model=model, sentence=sentence)
