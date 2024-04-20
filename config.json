@@ -21,7 +21,7 @@
        "results":{
           "models":"./models",
           "plots":"./plots",
-          "model-multi":"bbc-text-model-multi.pth"
+          "model-multi":"ADAM-BBC-TEXT-CLASSIFICATION-MULTI.pth"
        }
     }
  }
